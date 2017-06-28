@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+<div>
+    <div class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7"><h4>Google 2FA</h4></div>
+                <div class="col-md-5 ">@Html.Partial("_pvAccount")</div>
+            </div>
+        </div>
+        </div>
+ 
+    </div>
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

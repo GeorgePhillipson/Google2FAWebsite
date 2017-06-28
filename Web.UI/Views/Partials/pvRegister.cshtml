@@ -1,0 +1,52 @@
+﻿@model Web.Model.Register.RegisterViewModel
+ 
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <section id="RegisterSection">
+                <form role="form" id="frmRegister" action="@Url.Action("Register", "Account")" method="POST">
+                    <h4>Register</h4>
+                    @if (TempData["Message"] != null)
+                    {
+                        @TempData["Message"]
+                    }
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    <fieldset class="form-group">
+                        @Html.LabelFor(model => model.Username)
+                        @Html.TextBoxFor(model => model.Username, new { @class = "form-control", placeholder = "Username" })
+                        @Html.ValidationMessageFor(x => x.Username)
+                    </fieldset>
+                    <fieldset class="form-group">
+                        @Html.LabelFor(model => model.FirstName)
+                        @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", placeholder = "First Name" })
+                        @Html.ValidationMessageFor(x => x.FirstName)
+                    </fieldset>
+                    <fieldset class="form-group">
+                        @Html.LabelFor(model => model.LastName)
+                        @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", placeholder = "Last Name" })
+                        @Html.ValidationMessageFor(x => x.LastName)
+                    </fieldset>
+                    <fieldset class="form-group">
+                        @Html.LabelFor(model => model.UserEmail)
+                        @Html.TextBoxFor(model => model.UserEmail, new { @class = "form-control", placeholder = "Email" })
+                        @Html.ValidationMessageFor(x => x.UserEmail)
+                    </fieldset>
+                    <fieldset class="form-group">
+                        @Html.LabelFor(model => model.UserPassword)
+                        @Html.PasswordFor(model => model.UserPassword, new { @class = "form-control", PlaceHolder = "Password"})
+                        @Html.ValidationMessageFor(x => x.UserPassword)
+                    </fieldset>
+                    <fieldset class="form-group">
+                        @Html.LabelFor(model => model.CompareUserPassword)
+                        @Html.PasswordFor(model => model.CompareUserPassword, new { @class = "form-control", PlaceHolder = "Re-enter Password" })
+                        @Html.ValidationMessageFor(x => x.CompareUserPassword)
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <input type="submit" name="btnRegister" id="btnRegister" class="btn btn-primary" value="Register" />
+                    </fieldset>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>

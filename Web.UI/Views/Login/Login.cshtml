@@ -1,0 +1,58 @@
+﻿@model Web.Model.Login.LoginViewModel
+
+@if (ViewBag.Status == null || !ViewBag.Status)
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <section id="RegisterSection">
+                    <form role="form" id="frmRegister" action="@Url.Action("Login", "Account")" method="POST">
+                        <h4>Login</h4>
+                            <p>@ViewBag.Message</p>
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                        <fieldset class="form-group">
+                            @Html.LabelFor(model => model.Username)
+                            @Html.TextBoxFor(model => model.Username, new { @class = "form-control", placeholder = "Username" })
+                        </fieldset>
+                        <fieldset class="form-group">
+                            @Html.LabelFor(model => model.Password)
+                            @Html.PasswordFor(model => model.Password, new { @class = "form-control", PlaceHolder = "Password" })
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <input type="submit" name="btnLogin" id="btnLogin" class="btn btn-primary" value="Login" />
+                        </fieldset>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="container">
+        <div class="row">
+            <section id="RegisterSection" class="clearfix">
+                <div class="col-md-4">
+                    <h4>@ViewBag.Message</h4>
+                </div>
+                <div class="col-md-8">
+                    <img src="@ViewBag.BarcodeImage" />
+
+                    <form role="form" id="frmRegister" action="@Url.Action("VerifyTfa", "Account")" method="POST">
+                        <div class="form-group">
+                                @Html.LabelFor(model => model.TfaCode)
+                                @Html.TextBoxFor(model => model.TfaCode, new { @class = "form-control", placeholder = "Enter code" })
+                        </div>
+                        <div class="form-group">
+                                <input type="submit" name="btnTFACode" id="btnTFACode" class="btn btn-primary" value="Submit Code" />
+                            </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+
+}
+
+
